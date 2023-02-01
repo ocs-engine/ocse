@@ -8,7 +8,12 @@ set(FETCHCONTENT_QUIET OFF)
 
 find_package(Boost REQUIRED)
 
-add_library(ocse STATIC)
+add_library(ocse STATIC
+    src/entities/Planet.cpp
+    src/entities/Planet.h
+    src/entities/User.cpp
+    src/entities/User.h
+)
 target_include_directories(ocse PUBLIC src)
 
 add_subdirectory(modules/database)
