@@ -8,18 +8,16 @@ set(FETCHCONTENT_QUIET OFF)
 
 find_package(Boost REQUIRED)
 
-add_executable(ocse
-    src/main.cpp
-)
+add_library(ocse STATIC)
+target_include_directories(ocse PUBLIC src)
 
 add_subdirectory(modules/database)
 add_subdirectory(modules/http)
+add_subdirectory(tests)
 
-target_link_libraries(ocse PRIVATE
-    Boost::boost
-)
+target_link_libraries(ocse PRIVATE Boost::boost)
 
-target_compile_options(ocse PRIVATE
+target_compile_options(ocse PUBLIC
     "-Weverything"
     "-Wno-c++98-compat"
     "-Wno-c++98-compat-pedantic"
@@ -32,3 +30,6 @@ target_compile_options(ocse PRIVATE
     "-Wno-c++20-compat"
     "-Wno-c++20-compat-pedantic"
 )
+
+add_executable(ocse-exe src/main.cpp)
+target_link_libraries(ocse-exe PRIVATE ocse)
