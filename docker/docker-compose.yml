@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: ${CONTAINER_NAME_PGSQL}
+    image: postgres:${VERSION_PGSQL}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgsql_data:/var/lib/postgresql/data:rw,Z
+    env_file:
+      - ./environments/.env.pgsql
+volumes:
+  pgsql_data:
