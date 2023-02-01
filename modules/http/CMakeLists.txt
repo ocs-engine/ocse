@@ -16,7 +16,7 @@ FetchContent_Populate(lithium)
 FetchContent_GetProperties(lithium SOURCE_DIR lithium_source_dir)
 add_library(lithium-lithium INTERFACE IMPORTED GLOBAL)
 add_library(lithium::lithium ALIAS lithium-lithium)
-target_include_directories(lithium-lithium INTERFACE
+target_include_directories(lithium-lithium SYSTEM INTERFACE
     ${lithium_source_dir}/single_headers
 )
 
@@ -36,10 +36,10 @@ target_sources(ocse PRIVATE
     routes/entrypoint.cpp
 )
 
-target_include_directories(ocse PRIVATE
+target_include_directories(ocse PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(ocse PRIVATE
+target_link_libraries(ocse PUBLIC
     lithium::lithium
 )
