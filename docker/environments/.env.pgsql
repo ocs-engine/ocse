@@ -1,0 +1,3 @@
+POSTGRES_DB=ocse_db
+POSTGRES_USER=ocse_user
+POSTGRES_PASSWORD=ocse_pwd
