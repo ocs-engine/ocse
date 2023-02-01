@@ -9,6 +9,8 @@ set(FETCHCONTENT_QUIET OFF)
 find_package(Boost REQUIRED)
 
 add_library(ocse STATIC
+    src/actions/actions.cpp
+    src/actions/actions.h
     src/entities/Planet.cpp
     src/entities/Planet.h
     src/entities/User.cpp
