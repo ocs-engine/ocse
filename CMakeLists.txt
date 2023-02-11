@@ -6,7 +6,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(FETCHCONTENT_QUIET OFF)
 
-find_package(Boost REQUIRED)
+include(FetchContent)
+FetchContent_Declare(
+    boost
+    URL https://github.com/boostorg/boost/releases/download/boost-1.81.0/boost-1.81.0.7z
+    URL_HASH SHA256=86a1961606c433d15c5af55e1270d1d6d9afa770a243981e040f902c4c6ef154
+)
+if(NOT boost_POPULATED)
+    FetchContent_Populate(boost)
+    add_subdirectory(${boost_SOURCE_DIR} ${boost_BINARY_DIR} EXCLUDE_FROM_ALL SYSTEM)
+endif()
 
 add_library(ocse STATIC
     src/actions/actions.cpp
@@ -21,8 +30,6 @@ target_include_directories(ocse PUBLIC src)
 add_subdirectory(modules/database)
 add_subdirectory(modules/http)
 add_subdirectory(tests)
-
-target_link_libraries(ocse PRIVATE Boost::boost)
 
 target_compile_options(ocse PUBLIC
     "-Weverything"
