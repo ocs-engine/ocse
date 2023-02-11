@@ -18,8 +18,14 @@ FetchContent_Declare(
         GIT_TAG 197b61d16784d2c3e28cdd064d4f23b97e0af59f
         GIT_SHALLOW on
 )
-FetchContent_MakeAvailable(libpqxx)
-add_library(libpqxx::pqxx ALIAS pqxx)
+if (NOT libpqxx_POPULATED)
+    FetchContent_Populate(libpqxx)
+    block()
+        set(SKIP_BUILD_TEST ON)
+        add_subdirectory(${libpqxx_SOURCE_DIR} ${libpqxx_BINARY_DIR} SYSTEM)
+    endblock()
+    add_library(libpqxx::pqxx ALIAS pqxx)
+endif()
 
 target_link_libraries(ocse PRIVATE
     libpqxx::pqxx
