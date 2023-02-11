@@ -26,8 +26,6 @@ add_subdirectory(modules/database)
 add_subdirectory(modules/http)
 add_subdirectory(tests)
 
-target_link_libraries(ocse PRIVATE Boost::boost)
-
 target_compile_options(ocse PUBLIC
     "-Weverything"
     "-Wno-c++98-compat"

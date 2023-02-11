@@ -22,6 +22,7 @@ target_include_directories(lithium-lithium SYSTEM INTERFACE
 
 target_link_libraries(lithium-lithium INTERFACE
     Boost::context
+    Boost::lexical_cast
     CURL::libcurl
     OpenSSL::SSL
     Threads::Threads
@@ -41,5 +42,6 @@ target_include_directories(ocse PUBLIC
 )
 
 target_link_libraries(ocse PUBLIC
+    Boost::json
     lithium::lithium
 )
