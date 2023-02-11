@@ -1,0 +1,51 @@
+name: CMake
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  BUILD_TYPE: ReleaseWithDebInfo
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install build prerequisites
+      run: |
+        wget -qO - https://apt.kitware.com/keys/kitware-archive-latest.asc | sudo tee /etc/apt/trusted.gpg.d/apt.kitware.org.asc  >/dev/null
+        echo 'deb https://apt.kitware.com/ubuntu/ jammy main'              | sudo tee /etc/apt/sources.list.d/kitware.list        >/dev/null
+        wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key              | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc     >/dev/null
+        echo 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main' | sudo tee /etc/apt/sources.list.d/llvm.list           >/dev/null
+        wget -qO - https://www.postgresql.org/media/keys/ACCC4CF8.asc      | sudo tee /etc/apt/trusted.gpg.d/apt.postgres.org.asc >/dev/null
+        echo 'deb http://apt.postgresql.org/pub/repos/apt jammy-pgdg main' | sudo tee /etc/apt/sources.list.d/pgdg.list           >/dev/null
+        sudo apt update
+        sudo apt install \
+          cmake ninja-build \
+          clang-15 lld-15 libc++-15-dev libc++abi-15-dev \
+          libpq-dev=15.* libcurl4-openssl-dev
+
+    - name: Configure CMake
+      run: cmake \ 
+        -B ${{github.workspace}}/build \
+        -G Ninja \
+        -D CMAKE_C_COMPILER=clang-15
+        -D CMAKE_CXX_COMPILER=clang++-15
+        -D CMAKE_CXX_FLAGS="-stdlib=libc++"
+        -D CMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld-15"
+        -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build
+      working-directory: ${{github.workspace}}/build
+      run: cmake --build .
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build/tests
+      run: ocse-test
+
