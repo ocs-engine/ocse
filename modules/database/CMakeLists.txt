@@ -15,7 +15,7 @@ target_include_directories(sql_builder INTERFACE ${sql_builder_source_dir})
 FetchContent_Declare(
         libpqxx
         GIT_REPOSITORY https://github.com/jtv/libpqxx.git
-        GIT_TAG 121f749a4784c1e09b020c482f4e9cfdbc00797d
+        GIT_TAG 197b61d16784d2c3e28cdd064d4f23b97e0af59f
         GIT_SHALLOW on
 )
 FetchContent_MakeAvailable(libpqxx)
