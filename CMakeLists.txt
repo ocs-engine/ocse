@@ -17,7 +17,14 @@ if(NOT boost_POPULATED)
     add_subdirectory(${boost_SOURCE_DIR} ${boost_BINARY_DIR} EXCLUDE_FROM_ALL SYSTEM)
 endif()
 
-add_library(ocse STATIC)
+add_library(ocse STATIC
+    src/actions/actions.cpp
+    src/actions/actions.h
+    src/entities/Planet.cpp
+    src/entities/Planet.h
+    src/entities/User.cpp
+    src/entities/User.h
+)
 target_include_directories(ocse PUBLIC src)
 
 add_subdirectory(modules/database)
