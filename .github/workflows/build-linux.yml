@@ -35,11 +35,11 @@ jobs:
       run: cmake \ 
         -B ${{github.workspace}}/build \
         -G Ninja \
-        -D CMAKE_C_COMPILER=clang-15
-        -D CMAKE_CXX_COMPILER=clang++-15
-        -D CMAKE_CXX_FLAGS="-stdlib=libc++"
-        -D CMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld-15"
-        -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        -D CMAKE_CXX_COMPILER=clang++-15 \
+        -D CMAKE_CXX_FLAGS="-stdlib=libc++" \
+        -D CMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld-15" \
+        -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
+        ${{github.workspace}}
 
     - name: Build
       working-directory: ${{github.workspace}}/build
