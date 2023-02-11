@@ -19,6 +19,7 @@ jobs:
     
     - name: Install build prerequisites
       run: |
+        set -x
         wget -qO - https://apt.kitware.com/keys/kitware-archive-latest.asc | sudo tee /etc/apt/trusted.gpg.d/apt.kitware.org.asc  >/dev/null
         echo 'deb https://apt.kitware.com/ubuntu/ jammy main'              | sudo tee /etc/apt/sources.list.d/kitware.list        >/dev/null
         wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key              | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc     >/dev/null
