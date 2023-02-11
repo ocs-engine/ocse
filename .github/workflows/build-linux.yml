@@ -55,5 +55,5 @@ jobs:
       shell: bash -euxo pipefail {0}
       working-directory: ${{github.workspace}}/build/tests
       run: |
-        ocse-test
+        ./ocse-test
 
