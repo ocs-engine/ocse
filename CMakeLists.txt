@@ -6,13 +6,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(FETCHCONTENT_QUIET OFF)
 
-# find_package(Boost REQUIRED)
-
 include(FetchContent)
 FetchContent_Declare(
     boost
     URL https://github.com/boostorg/boost/releases/download/boost-1.81.0/boost-1.81.0.7z
-    # URL_HASH SHA256=6e689b266b27d4db57f648b1e5c905c8acd6716b46716a12f6fc73fc80af842e
+    URL_HASH SHA256=86a1961606c433d15c5af55e1270d1d6d9afa770a243981e040f902c4c6ef154
 )
 if(NOT boost_POPULATED)
     FetchContent_Populate(boost)
