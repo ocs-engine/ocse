@@ -4,7 +4,6 @@ FetchContent_Declare(
     boost-ut-pckg
     GIT_REPOSITORY https://github.com/boost-ext/ut.git
     GIT_TAG cd12498349362cc646a7140451bf51db2a2dac00 #v1.1.9
-    GIT_SHALLOW ON
 )
 FetchContent_Populate(boost-ut-pckg)
 FetchContent_GetProperties(boost-ut-pckg SOURCE_DIR boost_ut_source_dir)
