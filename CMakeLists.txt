@@ -53,6 +53,3 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         "-Wconversion"
     )
 endif()
-
-add_executable(ocse-exe src/main.cpp)
-target_link_libraries(ocse-exe PRIVATE ocse)

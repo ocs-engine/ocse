@@ -26,20 +26,23 @@ target_link_libraries(lithium-lithium INTERFACE
     Threads::Threads
 )
 
-target_sources(ocse PRIVATE
+add_executable(ocse-http)
+target_sources(ocse-http PRIVATE
     kernel.h
     kernel.cpp
+    main.cpp
     controllers/Home.h
     controllers/Home.cpp
     routes/entrypoint.h
     routes/entrypoint.cpp
 )
 
-target_include_directories(ocse PUBLIC
+target_include_directories(ocse-http PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(ocse PUBLIC
+target_link_libraries(ocse-http PRIVATE
     Boost::json
     lithium::lithium
+    ocse
 )
