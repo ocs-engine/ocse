@@ -1,4 +1,4 @@
-name: Ubuntu 22.04 Clang build
+name: Build
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-ubuntu-clang:
+  ubuntu-clang:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
 
@@ -58,7 +58,7 @@ jobs:
       run: |
         ./ocse-test
 
-  build-ubuntu-gcc:
+  ubuntu-gcc:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
 
