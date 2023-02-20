@@ -31,19 +31,28 @@ add_subdirectory(modules/database)
 add_subdirectory(modules/http)
 add_subdirectory(tests)
 
-target_compile_options(ocse PUBLIC
-    "-Weverything"
-    "-Wno-c++98-compat"
-    "-Wno-c++98-compat-pedantic"
-    "-Wno-c++11-compat"
-    "-Wno-c++11-compat-pedantic"
-    "-Wno-c++14-compat"
-    "-Wno-c++14-compat-pedantic"
-    "-Wno-c++17-compat"
-    "-Wno-c++17-compat-pedantic"
-    "-Wno-c++20-compat"
-    "-Wno-c++20-compat-pedantic"
-)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_options(ocse PUBLIC
+        "-Weverything"
+        "-Wno-c++98-compat"
+        "-Wno-c++98-compat-pedantic"
+        "-Wno-c++11-compat"
+        "-Wno-c++11-compat-pedantic"
+        "-Wno-c++14-compat"
+        "-Wno-c++14-compat-pedantic"
+        "-Wno-c++17-compat"
+        "-Wno-c++17-compat-pedantic"
+        "-Wno-c++20-compat"
+        "-Wno-c++20-compat-pedantic"
+    )
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(ocse PUBLIC
+        "-Wall"
+        "-Wextra"
+        "-Wpedantic"
+        "-Wconversion"
+    )
+endif()
 
 add_executable(ocse-exe src/main.cpp)
 target_link_libraries(ocse-exe PRIVATE ocse)
