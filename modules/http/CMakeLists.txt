@@ -9,7 +9,6 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/matt-42/lithium.git
     GIT_TAG 9ce90b1f96405bd2aced0d75fc2e9e49ea9a3fdd
     GIT_SUBMODULES ""
-    GIT_SHALLOW ON
 )
 FetchContent_Populate(lithium)
 FetchContent_GetProperties(lithium SOURCE_DIR lithium_source_dir)
