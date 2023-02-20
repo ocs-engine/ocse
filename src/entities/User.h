@@ -2,6 +2,7 @@
 #define OCSE_USER_H
 
 #include <string>
+#include <vector>
 
 namespace ocse::entities
 {
