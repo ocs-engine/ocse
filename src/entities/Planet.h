@@ -5,12 +5,12 @@
 
 namespace ocse::entities
 {
-    class User;
+    class Player;
     class Planet
     {
     public:
         std::string name;
-        const User* user;
+        const Player* player;
     };
 }
 

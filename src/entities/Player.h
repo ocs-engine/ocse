@@ -1,5 +1,5 @@
-#ifndef OCSE_USER_H
-#define OCSE_USER_H
+#ifndef OCSE_PLAYER_H
+#define OCSE_PLAYER_H
 
 #include <string>
 #include <vector>
@@ -7,7 +7,7 @@
 namespace ocse::entities
 {
     class Planet;
-    class User
+    class Player
     {
     public:
         std::string name;
@@ -15,4 +15,4 @@ namespace ocse::entities
     };
 }
 
-#endif //OCSE_USER_H
+#endif //OCSE_PLAYER_H

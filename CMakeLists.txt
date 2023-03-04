@@ -22,8 +22,8 @@ add_library(ocse STATIC
     src/actions/actions.h
     src/entities/Planet.cpp
     src/entities/Planet.h
-    src/entities/User.cpp
-    src/entities/User.h
+    src/entities/Player.cpp
+    src/entities/Player.h
 )
 target_include_directories(ocse PUBLIC src)
 
