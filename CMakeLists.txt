@@ -18,12 +18,12 @@ if(NOT boost_POPULATED)
 endif()
 
 add_library(ocse STATIC
-    src/actions/actions.cpp
-    src/actions/actions.h
-    src/entities/Planet.cpp
-    src/entities/Planet.h
-    src/entities/Player.cpp
-    src/entities/Player.h
+    src/actions/planet.cpp
+    src/actions/planet.h
+    src/entities/planet.cpp
+    src/entities/planet.h
+    src/entities/player.cpp
+    src/entities/player.h
 )
 target_include_directories(ocse PUBLIC src)
 

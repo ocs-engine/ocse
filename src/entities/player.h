@@ -1,5 +1,5 @@
-#ifndef OCSE_PLAYER_H
-#define OCSE_PLAYER_H
+#ifndef OCSE_ENTITIES_PLAYER_H
+#define OCSE_ENTITIES_PLAYER_H
 
 #include <string>
 #include <vector>
@@ -15,4 +15,4 @@ namespace ocse::entities
     };
 }
 
-#endif //OCSE_PLAYER_H
+#endif //OCSE_ENTITIES_PLAYER_H
