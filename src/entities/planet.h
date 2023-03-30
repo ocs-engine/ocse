@@ -1,5 +1,5 @@
-#ifndef OCSE_PLANET_H
-#define OCSE_PLANET_H
+#ifndef OCSE_ENTITIES_PLANET_H
+#define OCSE_ENTITIES_PLANET_H
 
 #include <string>
 
@@ -14,4 +14,4 @@ namespace ocse::entities
     };
 }
 
-#endif //OCSE_PLANET_H
+#endif //OCSE_ENTITIES_PLANET_H

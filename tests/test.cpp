@@ -1,8 +1,8 @@
-#include "actions/actions.h"
-#include "entities/Planet.h"
-#include "entities/Player.h"
+#include "actions/planet.h"
+#include "entities/planet.h"
+#include "entities/player.h"
 
-#include "boost/ut.hpp"
+#include <boost/ut.hpp>
 
 #include <deque>
 #include <stdexcept>
