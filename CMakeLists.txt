@@ -24,6 +24,8 @@ add_library(ocse STATIC
     src/entities/planet.h
     src/entities/player.cpp
     src/entities/player.h
+    src/functions/planet.cpp
+    src/functions/planet.h
 )
 target_include_directories(ocse PUBLIC src)
 
@@ -44,6 +46,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
         "-Wno-c++17-compat-pedantic"
         "-Wno-c++20-compat"
         "-Wno-c++20-compat-pedantic"
+        "-Wno-shadow"
+        "-Wno-padded"
     )
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     target_compile_options(ocse PUBLIC
